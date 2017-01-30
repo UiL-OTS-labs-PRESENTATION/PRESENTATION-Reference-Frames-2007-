@@ -1,0 +1,51 @@
+# Picture-Sentence Template Trials 
+
+# $zin: zin die pp te zien krijgen
+# $plaatje: welk plaatje pp te zien krijgen
+# $RF1: reference frames in overeenstemming met zin en plaatje bij antwoord ja
+# $RF2: reference frames in overeenstemming met zin en plaatje bij antwoord nee
+# $interval: interval tussen zin en plaatje
+
+trial {
+	#fixatiekruisje
+	picture {		
+		text {
+			font_size = 32;
+			caption = "+";	
+		};
+		x=0; y=0;
+	};
+	duration = 500;
+	
+	#plaatje wordt getoond
+	picture {
+		bitmap $plaatje;
+		x = 0 ; y = 0 ;
+	};
+	delta_time = 500;
+	duration = 1000;
+	code = "$plaatje";
+	
+	#interval tussen zin en plaatje
+	picture default;
+	delta_time = 1000;
+	
+	#zin wordt getoond
+	picture {		
+		text {
+			font_size = 32;
+			caption = "$zin";	
+		};
+		x=0; y=0;
+	};
+	delta_time = $interval;
+	duration = 2000;
+	code = "$zincode"; 
+	
+	#schrijft naar logfile welk antwoord bij welk reference frame hoort
+	nothing{ }; code = "0=$RF1";
+	nothing{ }; code = "1=$RF2";
+
+};
+
+#End

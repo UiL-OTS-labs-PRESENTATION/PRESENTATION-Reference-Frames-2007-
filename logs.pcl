@@ -1,0 +1,9 @@
+#pcl file om subject id uit logfile te halen
+
+#string subject_id = logfile.subject();
+#int id = int(subject_id);
+string subject_id = logfile.subject();
+int id = int(subject_id);
+#string nr;
+#nr.logfile_subject();
+#int sjs = int(nr);

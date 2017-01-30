@@ -1,0 +1,321 @@
+# Template van Templates
+
+# $volgorde: 0: eerst zin; 1: eerst plaatje
+# $interval: interval tussen zin en plaatje
+
+
+
+
+#naam van het interval
+
+$int_naam = "lang";
+
+IF '$interval == 0';
+	$int_naam = "kort";
+ENDIF;
+
+IF '$interval == 500';
+	$int_naam = "middellang";
+ENDIF;
+
+
+
+IF '$volgorde == 0';
+	$file = "S-P.tem";
+	$text = 
+"Je krijgt nu een serie te zien van een zin met daarop volgend een plaatje.
+De tijd tussen wanneer de zin en wanneer het plaatje getoond worden is $int_naam.
+Als je vindt dat de zin het plaatje GOED beschrijft, antwoord dan met 'ja'.
+Als je vindt dat de zin het plaatje NIET goed beschrijft, antwoord dan met 'nee'.
+Probeer zo snel en goed mogelijk te antwoorden.
+
+Druk op 'ja' als je klaar bent om te beginnen.
+
+Succes!";
+
+ENDIF;
+
+
+IF '$volgorde == 1';
+	$file = "P-S.tem";
+	$text = 
+"Je krijgt nu een serie te zien van een plaatje met daarop volgend een zin.
+De tijd tussen wanneer het plaatje en wanneer de zin getoond worden is $int_naam.
+Als je vindt dat de zin het plaatje GOED beschrijft, antwoord dan met 'ja'.
+Als je vindt dat de zin het plaatje NIET goed beschrijft, antwoord dan met 'nee'.
+Probeer zo snel en goed mogelijk te antwoorden.
+
+Druk op 'ja' als je klaar bent om te beginnen.
+
+Succes!";
+
+ENDIF;
+
+trial { 
+   trial_duration =  forever;
+   trial_type = specific_response;    	# trial ends when response
+   terminator_button = 1;             	#   button 1 is pressed
+	picture {
+		text {
+			font_size = 18;
+			caption = "$text";
+
+		};
+		x = 0 ; y = 0 ;		
+	};
+	nothing{ }; code = "interval=$interval";
+	nothing{ }; code = "volgorde=$volgorde";
+};
+
+TEMPLATE $file randomize {
+	# zin: zin die pp te zien krijgen
+	# plaatje: welk plaatje pp te zien krijgen
+	# RF1: reference frames in overeenstemming met zin en plaatje bij antwoord ja
+	# RF2: reference frames in overeenstemming met zin en plaatje bij antwoord nee
+
+	zin 							plaatje 	RF1	RF2;  
+	"bal links van auto" 	"L0" 		"RI"	"0";
+	"bal rechts van auto" 	"L0" 		"0"	"RI";
+	"bal boven auto"			"L0"		"0"	"RI";
+	"bal onder auto"			"L0"		"0"	"RI";
+	"bal groter dan auto"	"L0"		"fout"	"goed";
+	
+	
+	"bal links van auto" 	"B0" 		"0"	"RI";
+	"bal rechts van auto" 	"B0" 		"0"	"RI";
+	"bal boven auto"			"B0"		"RI"	"0";
+	"bal onder auto"			"B0"		"0"	"RI";
+	"bal kleiner dan auto"	"B0"		"goed"	"fout";
+	
+	
+	"bal links van auto" 	"R0" 		"0"	"RI";
+	"bal rechts van auto" 	"R0" 		"RI"	"0";
+	"bal boven auto"			"R0"		"0"	"RI";
+	"bal onder auto"			"R0"		"0"	"RI";
+	"bal groter dan auto"	"R0"		"fout"	"goed";
+	
+	
+	"bal links van auto" 	"O0" 		"0"	"RI";
+	"bal rechts van auto" 	"O0" 		"0"	"RI";
+	"bal boven auto"			"O0"		"0"	"RI";
+	"bal onder auto"			"O0"		"RI"	"0";
+	"bal kleiner dan auto"	"O0"		"goed"	"fout";
+	
+	
+	
+	
+	"bal links van auto" 	"L90" 	"R"	"I";
+	"bal rechts van auto" 	"L90" 	"0"	"RI";
+	"bal boven auto"			"L90"		"0"	"RI";
+	"bal onder auto"			"L90"		"I"	"R";
+	"bal groter dan auto"	"L90"		"fout"	"goed";
+		
+		
+	"bal links van auto" 	"B90" 	"I"	"R";
+	"bal rechts van auto" 	"B90" 	"0"	"RI";
+	"bal boven auto"			"B90"		"R"	"I";
+	"bal onder auto"			"B90"		"0"	"RI";
+	"bal kleiner dan auto"	"B90"		"goed"	"fout";
+	
+	
+	"bal links van auto" 	"R90" 	"0"	"RI";
+	"bal rechts van auto" 	"R90" 	"R"	"I";
+	"bal boven auto"			"R90"		"I"	"R";
+	"bal onder auto"			"R90"		"0"	"RI";
+	"bal groter dan auto"	"R90"		"fout"	"goed";
+	
+	
+	"bal links van auto" 	"O90" 	"0"	"RI";
+	"bal rechts van auto" 	"O90" 	"I"	"R";
+	"bal boven auto"			"O90"		"0"	"RI";
+	"bal onder auto"			"O90"		"R"	"I";
+	"bal kleiner dan auto"	"O90"		"goed"	"fout";
+	
+	
+	
+	
+	"bal links van auto" 	"L180" 	"R"	"I";
+	"bal rechts van auto" 	"L180" 	"I"	"R";
+	"bal boven auto"			"L180"	"0"	"RI";
+	"bal onder auto"			"L180"	"0"	"RI";
+	"bal groter dan auto"	"L180"	"fout"	"goed";
+	
+	
+	"bal links van auto" 	"B180" 	"0"	"RI";
+	"bal rechts van auto" 	"B180" 	"0"	"RI";
+	"bal boven auto"			"B180"	"R"	"I";
+	"bal onder auto"			"B180"	"I"	"R";
+	"bal kleiner dan auto"	"B180"	"goed"	"fout";
+	
+	
+	"bal links van auto" 	"R180" 	"I"	"R";
+	"bal rechts van auto" 	"R180" 	"R"	"I";
+	"bal boven auto"			"R180"	"0"	"RI";
+	"bal onder auto"			"R180"	"0"	"RI";
+	"bal groter dan auto"	"R180"	"fout"	"goed";
+	
+	
+	"bal links van auto" 	"O180" 	"0"	"RI";
+	"bal rechts van auto" 	"O180" 	"0"	"RI";
+	"bal boven auto"			"O180"	"I"	"R";
+	"bal onder auto"			"O180"	"R"	"I";
+	"bal kleiner dan auto"	"O180"	"goed"	"fout";
+	
+	
+	
+	
+	"bal links van auto" 	"L270" 	"R"	"I";
+	"bal rechts van auto" 	"L270" 	"0"	"RI";
+	"bal boven auto"			"L270"	"I"	"R";
+	"bal onder auto"			"L270"	"0"	"RI";
+	"bal groter dan auto"	"L270"	"fout"	"goed";
+	
+	
+	"bal links van auto" 	"B270" 	"0"	"RI";
+	"bal rechts van auto" 	"B270" 	"I"	"R";
+	"bal boven auto"			"B270"	"R"	"I";
+	"bal onder auto"			"B270"	"0"	"RI";
+	"bal kleiner dan auto"	"B270"	"goed"	"fout";
+	
+	
+	"bal links van auto" 	"R270" 	"0"	"RI";
+	"bal rechts van auto" 	"R270" 	"R"	"I";
+	"bal boven auto"			"R270"	"0"	"RI";
+	"bal onder auto"			"R270"	"I"	"R";
+	"bal groter dan auto"	"R270"	"fout"	"goed";
+	
+	
+	"bal links van auto" 	"O270" 	"I"	"R";
+	"bal rechts van auto" 	"O270" 	"0"	"RI";
+	"bal boven auto"			"O270"	"0"	"RI";
+	"bal onder auto"			"O270"	"R"	"I";
+	"bal kleiner dan auto"	"O270"	"goed"	"fout";
+	
+	
+	
+	
+	#herhaling
+	#van
+	#alle
+	#plaatjes
+	
+	
+	
+	
+	"bal links van auto" 	"L0" 		"RI"	"0";
+	"bal rechts van auto" 	"L0" 		"0"	"RI";
+	"bal boven auto"			"L0"		"0"	"RI";
+	"bal onder auto"			"L0"		"0"	"RI";
+	"bal groter dan auto"	"L0"		"fout"	"goed";
+	
+	
+	"bal links van auto" 	"B0" 		"0"	"RI";
+	"bal rechts van auto" 	"B0" 		"0"	"RI";
+	"bal boven auto"			"B0"		"RI"	"0";
+	"bal onder auto"			"B0"		"0"	"RI";
+	"bal kleiner dan auto"	"B0"		"goed"	"fout";
+	
+	
+	"bal links van auto" 	"R0" 		"0"	"RI";
+	"bal rechts van auto" 	"R0" 		"RI"	"0";
+	"bal boven auto"			"R0"		"0"	"RI";
+	"bal onder auto"			"R0"		"0"	"RI";
+	"bal groter dan auto"	"R0"		"fout"	"goed";
+	
+	
+	"bal links van auto" 	"O0" 		"0"	"RI";
+	"bal rechts van auto" 	"O0" 		"0"	"RI";
+	"bal boven auto"			"O0"		"0"	"RI";
+	"bal onder auto"			"O0"		"RI"	"0";
+	"bal kleiner dan auto"	"O0"		"goed"	"fout";
+	
+	
+	
+	
+	"bal links van auto" 	"L90" 	"R"	"I";
+	"bal rechts van auto" 	"L90" 	"0"	"RI";
+	"bal boven auto"			"L90"		"0"	"RI";
+	"bal onder auto"			"L90"		"I"	"R";
+	"bal groter dan auto"	"L90"		"fout"	"goed";
+		
+		
+	"bal links van auto" 	"B90" 	"I"	"R";
+	"bal rechts van auto" 	"B90" 	"0"	"RI";
+	"bal boven auto"			"B90"		"R"	"I";
+	"bal onder auto"			"B90"		"0"	"RI";
+	"bal kleiner dan auto"	"B90"		"goed"	"fout";
+	
+	
+	"bal links van auto" 	"R90" 	"0"	"RI";
+	"bal rechts van auto" 	"R90" 	"R"	"I";
+	"bal boven auto"			"R90"		"I"	"R";
+	"bal onder auto"			"R90"		"0"	"RI";
+	"bal groter dan auto"	"R90"		"fout"	"goed";
+	
+	
+	"bal links van auto" 	"O90" 	"0"	"RI";
+	"bal rechts van auto" 	"O90" 	"I"	"R";
+	"bal boven auto"			"O90"		"0"	"RI";
+	"bal onder auto"			"O90"		"R"	"I";
+	"bal kleiner dan auto"	"O90"		"goed"	"fout";
+	
+	
+	
+	
+	"bal links van auto" 	"L180" 	"R"	"I";
+	"bal rechts van auto" 	"L180" 	"I"	"R";
+	"bal boven auto"			"L180"	"0"	"RI";
+	"bal onder auto"			"L180"	"0"	"RI";
+	"bal groter dan auto"	"L180"	"fout"	"goed";
+	
+	
+	"bal links van auto" 	"B180" 	"0"	"RI";
+	"bal rechts van auto" 	"B180" 	"0"	"RI";
+	"bal boven auto"			"B180"	"R"	"I";
+	"bal onder auto"			"B180"	"I"	"R";
+	"bal kleiner dan auto"	"B180"	"goed"	"fout";
+	
+	
+	"bal links van auto" 	"R180" 	"I"	"R";
+	"bal rechts van auto" 	"R180" 	"R"	"I";
+	"bal boven auto"			"R180"	"0"	"RI";
+	"bal onder auto"			"R180"	"0"	"RI";
+	"bal groter dan auto"	"R180"	"fout"	"goed";
+	
+	
+	"bal links van auto" 	"O180" 	"0"	"RI";
+	"bal rechts van auto" 	"O180" 	"0"	"RI";
+	"bal boven auto"			"O180"	"I"	"R";
+	"bal onder auto"			"O180"	"R"	"I";
+	"bal kleiner dan auto"	"O180"	"goed"	"fout";
+	
+	
+	
+	
+	"bal links van auto" 	"L270" 	"R"	"I";
+	"bal rechts van auto" 	"L270" 	"0"	"RI";
+	"bal boven auto"			"L270"	"I"	"R";
+	"bal onder auto"			"L270"	"0"	"RI";
+	"bal groter dan auto"	"L270"	"fout"	"goed";
+	
+	
+	"bal links van auto" 	"B270" 	"0"	"RI";
+	"bal rechts van auto" 	"B270" 	"I"	"R";
+	"bal boven auto"			"B270"	"R"	"I";
+	"bal onder auto"			"B270"	"0"	"RI";
+	"bal kleiner dan auto"	"B270"	"goed"	"fout";
+	
+	
+	"bal links van auto" 	"R270" 	"0"	"RI";
+	"bal rechts van auto" 	"R270" 	"R"	"I";
+	"bal boven auto"			"R270"	"0"	"RI";
+	"bal onder auto"			"R270"	"I"	"R";
+	"bal groter dan auto"	"R270"	"fout"	"goed";
+	
+	
+	"bal links van auto" 	"O270" 	"I"	"R";
+	"bal rechts van auto" 	"O270" 	"0"	"RI";
+	"bal boven auto"			"O270"	"0"	"RI";
+	"bal onder auto"			"O270"	"R"	"I";
+	"bal kleiner dan auto"	"O270"	"goed"	"fout";
+};

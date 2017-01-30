@@ -1,0 +1,18 @@
+#pcl file om subject id uit logfile te halen
+
+string subject_id = logfile.subject();
+int id = int(subject_id);
+#string subject_id = logfile.subject();
+#int id = int(subject_id);
+#string nr;
+#nr.logfile_subject();
+#int sjs = int(nr);
+
+loop
+	int i = 1
+until
+	i > trials.count()
+begin
+	trials[i].present();
+	i = i + 1
+end
